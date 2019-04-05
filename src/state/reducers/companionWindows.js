@@ -1,28 +1,23 @@
-import {
-  removeIn, setIn, updateIn, merge,
-} from 'immutable';
+import { set, update, unset } from './utils';
 import ActionTypes from '../actions/action-types';
 
 /** */
 export function companionWindowsReducer(state = {}, action) {
   switch (action.type) {
     case ActionTypes.ADD_COMPANION_WINDOW:
-      return setIn(state, [action.id], action.payload);
+      return set(state, [action.id], action.payload);
 
     case ActionTypes.ADD_WINDOW:
-      return action.companionWindows.reduce((newState, cw) => {
-        newState[cw.id] = cw; // eslint-disable-line no-param-reassign
-        return newState;
-      }, state);
+      return action.companionWindows.reduce((acc, cw) => set(acc, [cw.id], cw), state);
 
     case ActionTypes.REMOVE_WINDOW:
-      return action.companionWindowIds.reduce((newState, id) => removeIn(newState, [id]), state);
+      return action.companionWindowIds.reduce((acc, id) => unset(acc, [id]), state);
 
     case ActionTypes.UPDATE_COMPANION_WINDOW:
-      return updateIn(state, [action.id], orig => merge(orig, action.payload));
+      return update(state, [action.id], action.payload);
 
     case ActionTypes.REMOVE_COMPANION_WINDOW:
-      return removeIn(state, [action.id]);
+      return unset(state, [action.id]);
 
     default:
       return state;

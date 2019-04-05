@@ -1,3 +1,4 @@
+import { set, unset } from './utils';
 import ActionTypes from '../actions/action-types';
 
 /**
@@ -6,38 +7,28 @@ import ActionTypes from '../actions/action-types';
 export const infoResponsesReducer = (state = {}, action) => {
   switch (action.type) {
     case ActionTypes.REQUEST_INFO_RESPONSE:
-      return {
-        ...state,
-        [action.infoId]: {
-          id: action.infoId,
-          isFetching: true,
-        },
-      };
+      return set(state, [action.infoId], {
+        id: action.infoId,
+        isFetching: true,
+      });
+
     case ActionTypes.RECEIVE_INFO_RESPONSE:
-      return {
-        ...state,
-        [action.infoId]: {
-          id: action.infoId,
-          isFetching: false,
-          json: action.infoJson,
-        },
-      };
+      return set(state, [action.infoId], {
+        id: action.infoId,
+        isFetching: false,
+        json: action.infoJson,
+      });
+
     case ActionTypes.RECEIVE_INFO_RESPONSE_FAILURE:
-      return {
-        ...state,
-        [action.infoId]: {
-          error: action.error,
-          id: action.infoId,
-          isFetching: false,
-        },
-      };
+      return set(state, [action.infoId], {
+        error: action.error,
+        id: action.infoId,
+        isFetching: false,
+      });
+
     case ActionTypes.REMOVE_INFO_RESPONSE:
-      return Object.keys(state).reduce((object, key) => {
-        if (key !== action.infoId) {
-          object[key] = state[key]; // eslint-disable-line no-param-reassign
-        }
-        return object;
-      }, {});
+      return unset(state, [action.infoId]);
+
     default: return state;
   }
 };

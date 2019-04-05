@@ -1,3 +1,4 @@
+import { set, unset } from './utils';
 import ActionTypes from '../actions/action-types';
 
 /**
@@ -6,19 +7,11 @@ import ActionTypes from '../actions/action-types';
 export const viewersReducer = (state = {}, action) => {
   switch (action.type) {
     case ActionTypes.UPDATE_VIEWPORT:
-      return {
-        ...state,
-        [action.windowId]: {
-          ...action.payload,
-        },
-      };
+      return set(state, [action.windowId], action.payload);
+
     case ActionTypes.REMOVE_WINDOW:
-      return Object.keys(state).reduce((object, key) => {
-        if (key !== action.windowId) {
-          object[key] = state[key]; // eslint-disable-line no-param-reassign
-        }
-        return object;
-      }, {});
+      return unset(state, [action.windowId]);
+
     default:
       return state;
   }
