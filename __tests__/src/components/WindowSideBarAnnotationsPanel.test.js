@@ -30,7 +30,7 @@ describe('WindowSideBarAnnotationsPanel', () => {
 
   it('has the AnnotationSettings component', () => {
     const titleControls = createWrapper().prop('titleControls');
-    expect(titleControls.type.displayName).toEqual('Connect(WithPlugins(AnnotationSettings))');
+    expect(titleControls.type.WrappedComponent.type.displayName).toEqual('WithPlugins(AnnotationSettings)');
   });
 
   it('renders the annotationsCount', () => {

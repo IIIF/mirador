@@ -37,7 +37,7 @@ describe('ThumbnailNavigation', () => {
   it('renders containers based off of number of canvases', () => {
     expect(wrapper
       .find('AutoSizer').dive().find('List').dive()
-      .find('WithStyles(Connect(WithPlugins(ThumbnailCanvasGrouping)))').length).toEqual(3);
+      .find('WithStyles(Connect(Component))').length).toEqual(3);
   });
   it('has a ref set used to reset on view change', () => {
     expect(wrapper.instance().gridRef).not.toBe(null);

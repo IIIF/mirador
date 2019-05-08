@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import curry from 'lodash/curry';
 import isEmpty from 'lodash/isEmpty';
 import PluginContext from './PluginContext';
@@ -27,7 +27,7 @@ function _withPlugins(targetName, TargetComponent) { // eslint-disable-line no-u
   }
 
   PluginHoc.displayName = `WithPlugins(${targetName})`;
-  return PluginHoc;
+  return memo(PluginHoc);
 }
 
 /** withPlugins('MyComponent')(MyComponent) */
