@@ -3,8 +3,10 @@
   "plugins": [
     "@babel/plugin-transform-runtime",
     "transform-react-remove-prop-types",
-    ["lodash", { "id": [
-      "lodash", "react-placeholder",
-      ]}
-    ]],
+    ["import", {
+      "libraryName": "lodash",
+      "libraryDirectory": "",
+      "camel2DashComponentName": false,
+    }, "lodash"],
+  ]
 }
