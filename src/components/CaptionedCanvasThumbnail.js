@@ -24,9 +24,6 @@ export class CaptionedCanvasThumbnail extends Component {
           }
           isValid={manifestoCanvas.hasValidDimensions}
           maxHeight={height}
-          style={{
-            maxWidth: `${Math.ceil(height * manifestoCanvas.aspectRatio)}px`,
-          }}
         />
         <div
           className={classNames(ns('canvas-thumb-label'), classes.canvasThumbLabel)}

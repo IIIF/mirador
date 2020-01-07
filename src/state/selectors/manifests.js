@@ -1,5 +1,6 @@
-import { createSelector } from 'reselect';
+import { createSelector, createSelectorCreator } from 'reselect';
 import manifesto, { LanguageMap } from 'manifesto.js';
+import memoize from 'lodash/memoize';
 import ManifestoCanvas from '../../lib/ManifestoCanvas';
 
 /** */
@@ -352,7 +353,15 @@ function getLocales(resource) {
   return Object.keys(languages);
 }
 
-export const getMetadataLocales = createSelector(
+/** */
+const manifestHashFn = manifest => manifest && manifest.id;
+// this has the potential to be an annoying memory leak, because the memoize store will grow
+// unbounded.
+const manifestMemoizingSelectorCreator = createSelectorCreator(memoize, manifestHashFn);
+
+// this is specially memoized because getLocales is creating new array instances
+// every time it is called.
+export const getMetadataLocales = manifestMemoizingSelectorCreator(
   [getManifestoInstance],
   manifest => getLocales(manifest),
 );
