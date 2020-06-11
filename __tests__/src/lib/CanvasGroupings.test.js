@@ -58,8 +58,19 @@ describe('CanvasGroupings', () => {
       beforeEach(() => {
         subject = new CanvasGroupings([0, 1, 2, 3], 'book');
       });
-      it('selects by index / 2', () => {
+      it('selects by index', () => {
         expect(subject.getCanvases(2)).toEqual([1, 2]);
+      });
+    });
+    describe('book with facing pages', () => {
+      let subject;
+      beforeEach(() => {
+        subject = new CanvasGroupings([0, 1, { getViewingHint: () => 'facing-pages', id: 2 }, 3], 'book');
+      });
+      it('selects by index', () => {
+        expect(subject.getCanvases(1)).toEqual([1]);
+        expect(subject.getCanvases(2)[0].id).toEqual(2);
+        expect(subject.getCanvases(3)).toEqual([3]);
       });
     });
     describe('gallery', () => {
