@@ -47,8 +47,10 @@ export class WindowTopMenu extends Component {
         getContentAnchorEl={null}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        onEntering={toggleDraggingEnabled}
-        onExit={toggleDraggingEnabled}
+        TransitionProps={{
+          onEntering: toggleDraggingEnabled,
+          onExit: toggleDraggingEnabled,
+        }}
         orientation="horizontal"
       >
         <WindowViewSettings windowId={windowId} handleClose={handleClose} />

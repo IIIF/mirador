@@ -54,7 +54,9 @@ export class WindowList extends Component {
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        onEntering={WindowList.focus2ndListIitem}
+        TransitionProps={{
+          onEntering: WindowList.focus2ndListIitem,
+        }}
       >
         <ListSubheader role="presentation" selected={false} disabled tabIndex="-1">
           {t('openWindows')}

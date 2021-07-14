@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withSize } from 'react-sizeme';
 import { withStyles } from '@material-ui/core';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import { alpha } from '@material-ui/core/styles/colorManipulator';
 import { withPlugins } from '../extend/withPlugins';
 import { getWorkspace } from '../state/selectors';
 import { WindowCanvasNavigationControls } from '../components/WindowCanvasNavigationControls';
@@ -28,7 +28,7 @@ const styles = theme => ({
     flexDirection: 'column',
   },
   controls: {
-    backgroundColor: fade(theme.palette.background.paper, 0.5),
+    backgroundColor: alpha(theme.palette.background.paper, 0.5),
     bottom: 0,
     position: 'absolute',
     width: '100%',

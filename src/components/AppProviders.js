@@ -4,7 +4,7 @@ import Fullscreen from 'react-full-screen';
 import { I18nextProvider } from 'react-i18next';
 import { LiveAnnouncer } from 'react-aria-live';
 import {
-  ThemeProvider, StylesProvider, createMuiTheme, jssPreset, createGenerateClassName,
+  ThemeProvider, StylesProvider, createTheme, jssPreset, createGenerateClassName,
 } from '@material-ui/core/styles';
 import { DndContext, DndProvider } from 'react-dnd';
 import MultiBackend from 'react-dnd-multi-backend';
@@ -100,7 +100,7 @@ export class AppProviders extends Component {
         <I18nextProvider i18n={this.i18n}>
           <LiveAnnouncer>
             <ThemeProvider
-              theme={createMuiTheme(theme)}
+              theme={createTheme(theme)}
             >
               <StylesProvider
                 jss={create({ plugins: [...jssPreset().plugins, rtl()] })}

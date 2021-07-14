@@ -23,7 +23,7 @@ export class ManifestListItemError extends Component {
         <Grid container>
           <Grid container item xs={12} sm={6}>
             <Grid item xs={4} sm={3}>
-              <Grid container justify="center">
+              <Grid container justifyContent="center">
                 <ErrorIcon className={classes.errorIcon} />
               </Grid>
             </Grid>
@@ -35,7 +35,7 @@ export class ManifestListItemError extends Component {
         </Grid>
 
         <Grid container>
-          <Grid container item xs={12} sm={6} justify="flex-end">
+          <Grid container item xs={12} sm={6} justifyContent="flex-end">
             <Grid item>
               <Button onClick={() => { onDismissClick(manifestId); }}>
                 {t('dismiss')}

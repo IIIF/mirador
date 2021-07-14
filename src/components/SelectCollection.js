@@ -30,7 +30,7 @@ export class SelectCollection extends Component {
       t,
     } = this.props;
     return (
-      <Grid container justify="center" alignItems="center">
+      <Grid container justifyContent="center" alignItems="center">
         <Grid container direction="column" alignItems="center">
           <Typography variant="h4" paragraph>
             <em>

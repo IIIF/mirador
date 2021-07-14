@@ -30,7 +30,7 @@ export class WorkspaceAddButton extends Component {
           }
           className={classes.fab}
           classes={{ primary: classes.fabPrimary, secondary: classes.fabSecondary }}
-          variant={useExtendedFab ? 'extended' : 'round'}
+          variant={useExtendedFab ? 'extended' : 'circular'}
           onClick={() => { setWorkspaceAddVisibility(!isWorkspaceAddVisible); }}
         >
           {

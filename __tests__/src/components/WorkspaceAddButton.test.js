@@ -65,7 +65,7 @@ describe('WorkspaceAddButton', () => {
       const wrapper = createWrapper({ useExtendedFab: false });
 
       expect(extendedWrapper.find(Fab).props().variant).toBe('extended');
-      expect(wrapper.find(Fab).props().variant).toEqual('round');
+      expect(wrapper.find(Fab).props().variant).toEqual('circular');
     });
   });
 });

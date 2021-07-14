@@ -1,7 +1,7 @@
 import { compose } from 'redux';
 import { withTranslation } from 'react-i18next';
 import { withStyles } from '@material-ui/core/styles';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import { alpha } from '@material-ui/core/styles/colorManipulator';
 import { withPlugins } from '../extend/withPlugins';
 import { WindowAuthenticationBar } from '../components/WindowAuthenticationBar';
 
@@ -13,7 +13,7 @@ import { WindowAuthenticationBar } from '../components/WindowAuthenticationBar';
 const styles = theme => ({
   buttonInvert: {
     '&:hover': {
-      backgroundColor: fade(
+      backgroundColor: alpha(
         theme.palette.secondary.contrastText, 1 - theme.palette.action.hoverOpacity,
       ),
     },

@@ -2,7 +2,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withTranslation } from 'react-i18next';
 import { withStyles } from '@material-ui/core/styles';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import { alpha } from '@material-ui/core/styles/colorManipulator';
 import { withPlugins } from '../extend/withPlugins';
 import { SidebarIndexTableOfContents } from '../components/SidebarIndexTableOfContents';
 import {
@@ -65,7 +65,7 @@ const styles = theme => ({
     },
   },
   visibleNode: {
-    backgroundColor: fade(theme.palette.highlights.primary, 0.35),
+    backgroundColor: alpha(theme.palette.highlights.primary, 0.35),
     display: 'inline',
   },
 });
