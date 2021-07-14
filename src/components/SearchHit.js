@@ -115,7 +115,7 @@ export class SearchHit extends Component {
           selected={selected}
         >
           <ListItemText primaryTypographyProps={{ variant: 'body1' }}>
-            <Typography variant="subtitle2" className={classes.subtitle}>
+            <Typography className={classes.subtitle} component="div" variant="subtitle2">
               <Chip component="span" label={index + 1} className={classes.hitCounter} />
               <span id={canvasLabelHtmlId}>
                 {canvasLabel}

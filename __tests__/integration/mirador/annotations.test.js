@@ -21,7 +21,7 @@ describe('Annotations in Mirador', () => {
         .find(w => w.manifestId === 'https://iiif.harvardartmuseums.org/manifests/object/299843').id;
     });
 
-    await expect(page).toClick(`#${windowId} button[aria-label="Toggle sidebar"]`);
+    await expect(page).toClick(`#${windowId} button[aria-label="Show sidebar"]`);
     await expect(page).toClick(`#${windowId} button[aria-label="Annotations"]`);
 
     await expect(page).toMatchElement(`#${windowId} h3`, { text: 'Annotations' });

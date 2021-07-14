@@ -27,8 +27,8 @@ describe('Window Sidebars', () => {
       .find(window => window.manifestId === 'http://localhost:4488/__tests__/fixtures/version-2/001.json')
       .id;
 
-    await expect(page).toMatchElement(`#${windowId} button[aria-label="Toggle sidebar"]`);
-    await expect(page).toClick(`#${windowId} button[aria-label="Toggle sidebar"]`);
+    await expect(page).toMatchElement(`#${windowId} button[aria-label="Show sidebar"]`);
+    await expect(page).toClick(`#${windowId} button[aria-label="Show sidebar"]`);
 
     await expect(page).toMatchElement(`#${windowId} button[aria-label="Information"]`);
   });
@@ -42,8 +42,8 @@ describe('Window Sidebars', () => {
       .find(window => window.manifestId === 'http://localhost:4488/__tests__/fixtures/version-2/001.json')
       .id;
 
-    await expect(page).toMatchElement(`#${windowId} button[aria-label="Toggle sidebar"]`);
-    await expect(page).toClick(`#${windowId} button[aria-label="Toggle sidebar"]`);
+    await expect(page).toMatchElement(`#${windowId} button[aria-label="Show sidebar"]`);
+    await expect(page).toClick(`#${windowId} button[aria-label="Show sidebar"]`);
 
     await expect(page).toMatchElement(`#${windowId} button[aria-label="Index"]`);
   });

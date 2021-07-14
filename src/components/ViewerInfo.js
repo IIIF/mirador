@@ -20,10 +20,10 @@ export class ViewerInfo extends Component {
 
     return (
       <div className={classNames(ns('osd-info'), classes.osdInfo)}>
-        <Typography display="inline" variant="caption" className={ns('canvas-count')}>
+        <Typography display="inline" role="status" variant="caption" className={ns('canvas-count')}>
           { t('pagination', { current: canvasIndex + 1, total: canvasCount }) }
         </Typography>
-        <Typography display="inline" variant="caption" className={ns('canvas-label')}>
+        <Typography display="inline" role="status" variant="caption" className={ns('canvas-label')}>
           {canvasLabel && ` • ${canvasLabel}`}
         </Typography>
       </div>

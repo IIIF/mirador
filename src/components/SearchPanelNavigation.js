@@ -64,7 +64,7 @@ export class SearchPanelNavigation extends Component {
             >
               <ChevronLeftIcon style={iconStyle} />
             </MiradorMenuButton>
-            <span style={{ unicodeBidi: 'plaintext' }}>
+            <span role="status" style={{ unicodeBidi: 'plaintext' }}>
               {t('pagination', { current: currentHitIndex + 1, total: lengthText })}
             </span>
             <MiradorMenuButton
