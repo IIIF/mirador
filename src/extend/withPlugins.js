@@ -33,7 +33,7 @@ function _withPlugins(targetName, TargetComponent) { // eslint-disable-line no-u
 
       return (
         <WrapPluginComponent
-          targetProps={passDownProps}
+          targetProps={{...passDownProps, PluginComponents }}
           {...passDownProps}
           PluginComponents={PluginComponents}
           TargetComponent={TargetComponent}
