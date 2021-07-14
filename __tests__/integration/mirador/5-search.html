@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>Mirador</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  </head>
+  <body>
+    <div id="mirador" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
+    <script>document.write("<script type='text/javascript' src='../../../dist/mirador.min.js?v=" + Date.now() + "'><\/script>");</script>
+    <script type="text/javascript">
+     var miradorInstance = Mirador.viewer({
+       id: 'mirador',
+       window: {
+         defaultSideBarPanel: 'search',
+         sideBarOpenByDefault: true,
+       },
+       windows: [{
+         manifestId: 'https://wellcomelibrary.org/iiif/b18035723/manifest',
+         canvasIndex: 4,
+       }],
+       manifests: {
+         "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00068386/manifest": { provider: "Bayerische Staatsbibliothek"},
+         "https://purl.stanford.edu/db076zm5895/iiif/manifest": { provider: "Stanford University Libraries"},
+         "https://purl.stanford.edu/np593hr6132/iiif/manifest": { provider: "Stanford University Libraries"},
+         'https://wellcomelibrary.org/iiif/b18035723/manifest': { provider: "Wellcome Library"},
+       }
+     });
+    </script>
+  </body>
+</html>
