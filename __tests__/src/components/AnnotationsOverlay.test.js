@@ -183,7 +183,10 @@ describe('AnnotationsOverlay', () => {
       const context = wrapper.instance().osdCanvasOverlay.context2d;
       expect(context.strokeStyle).toEqual('yellow');
       expect(context.lineWidth).toEqual(20);
-      expect(strokeRect).toHaveBeenCalledWith(10, 10, 100, 200);
+      expect(strokeRect.mock.calls[0][0]).toBeCloseTo(24.561);
+      expect(strokeRect.mock.calls[0][1]).toBeCloseTo(24.561);
+      expect(strokeRect.mock.calls[0][2]).toBeCloseTo(245.61);
+      expect(strokeRect.mock.calls[0][3]).toBeCloseTo(491.22);
     });
   });
 

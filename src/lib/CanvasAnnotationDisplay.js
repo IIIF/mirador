@@ -5,7 +5,7 @@
 export default class CanvasAnnotationDisplay {
   /** */
   constructor({
-    resource, palette, zoomRatio, offset, selected, hovered,
+    resource, palette, zoomRatio, offset, selected, hovered, scaleFactor,
   }) {
     this.resource = resource;
     this.palette = palette;
@@ -13,6 +13,7 @@ export default class CanvasAnnotationDisplay {
     this.offset = offset;
     this.selected = selected;
     this.hovered = hovered;
+    this.scaleFactor = scaleFactor;
   }
 
   /** */
@@ -104,9 +105,12 @@ export default class CanvasAnnotationDisplay {
 
   /** */
   fragmentContext() {
-    const fragment = this.resource.fragmentSelector;
+    let fragment = this.resource.fragmentSelector;
     fragment[0] += this.offset.x;
     fragment[1] += this.offset.y;
+    if (this.scaleFactor && this.scaleFactor !== 1) {
+      fragment = fragment.map(x => x * this.scaleFactor);
+    }
 
     let currentPalette;
     if (this.selected) {

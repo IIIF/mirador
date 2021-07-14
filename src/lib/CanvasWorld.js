@@ -28,9 +28,15 @@ export default class CanvasWorld {
     }
 
     const [dirX, dirY] = this.canvasDirection;
+    // Smallest dimension in the given direction
     const scale = dirY === 0
       ? Math.min(...this.canvases.map(c => c.getHeight()))
       : Math.min(...this.canvases.map(c => c.getWidth()));
+    // Largest dimension in the given direction
+    const upScale = dirY === 0
+      ? Math.max(...this.canvases.map(c => c.getHeight()))
+      : Math.max(...this.canvases.map(c => c.getWidth()));
+
     let incX = 0;
     let incY = 0;
 
@@ -38,15 +44,20 @@ export default class CanvasWorld {
       let canvasHeight = 0;
       let canvasWidth = 0;
 
+      // Factor to scale elements on the canvas by to give the
+      // world position
+      let worldScale = 1;
       if (!isNaN(canvas.aspectRatio)) {
         if (dirY === 0) {
           // constant height
           canvasHeight = scale;
           canvasWidth = Math.floor(scale * canvas.aspectRatio);
+          worldScale = upScale / canvas.getHeight();
         } else {
           // constant width
           canvasWidth = scale;
           canvasHeight = Math.floor(scale * (1 / canvas.aspectRatio));
+          worldScale = upScale / canvas.getWidth();
         }
       }
 
@@ -54,6 +65,7 @@ export default class CanvasWorld {
         canvas,
         height: canvasHeight,
         width: canvasWidth,
+        worldScale,
         x: incX,
         y: incY,
       });
@@ -196,6 +208,15 @@ export default class CanvasWorld {
       x: coordinates[0],
       y: coordinates[1],
     };
+  }
+
+  /** scaleByCanvas - Get the scaling factor for the given canvas.
+   *  For a given element on the canvas, multiplying its offset coordinates
+   *  (i.e. [elemenX + canvasX, elemY + canvasY, elemWidth, elemHeight]) by
+   *  this factor returns the coordinates of the element in the world
+   */
+  scaleByCanvas(canvasTarget) {
+    return this.canvasDimensions.find(c => c.canvas.id === canvasTarget).worldScale;
   }
 
   /**

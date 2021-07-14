@@ -345,6 +345,7 @@ export class AnnotationsOverlay extends Component {
       annotation.resources.forEach((resource) => {
         if (!canvasWorld.canvasIds.includes(resource.targetId)) return;
         const offset = canvasWorld.offsetByCanvas(resource.targetId);
+        const scaleFactor = canvasWorld.scaleByCanvas(resource.targetId);
         const canvasAnnotationDisplay = new CanvasAnnotationDisplay({
           hovered: hoveredAnnotationIds.includes(resource.id),
           offset,
@@ -356,6 +357,7 @@ export class AnnotationsOverlay extends Component {
             },
           },
           resource,
+          scaleFactor,
           selected: selectedAnnotationId === resource.id,
           zoomRatio,
         });
